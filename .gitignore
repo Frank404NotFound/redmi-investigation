@@ -26,3 +26,7 @@
 !/scripts/netstats_summary_public.py
 !/scripts/SCRIPT_REVIEW.md
 !/disable-test/compare_snapshots_public.py
+!/scripts/dex_index_public.py
+!/tests/
+/tests/*
+!/tests/test_tools.py

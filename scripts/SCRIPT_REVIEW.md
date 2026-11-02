@@ -1,6 +1,6 @@
 # Investigation script review
 
-The local investigation used 23 Python scripts. No shell scripts were found outside the private artifacts. The originals are preserved locally and are not published; they were written for one investigation, not a portable toolkit. The tools listed below are adapted versions: they require explicit inputs, do not modify the phone, do not make network requests, and do not contain recorded device data. They do not reproduce every manual analysis step or establish a report's transmission. Review all outputs before sharing them.
+The original investigation toolkit contains 23 Python scripts; the surviving artifacts do not establish the invocation of every helper. No shell scripts were found outside the private artifacts. The originals are preserved locally and are not published; they were written for one investigation, not a portable toolkit. The tools listed below are adapted versions: they require explicit inputs, do not modify the phone, do not make network requests, and do not contain recorded device data. They do not reproduce every manual analysis step or establish a report's transmission. Review all outputs before sharing them.
 
 | Original script | Purpose and disposition |
 |---|---|
@@ -12,7 +12,7 @@ The local investigation used 23 Python scripts. No shell scripts were found outs
 | `scripts/index_bytecode.py` | Index method indicators in disassembly. **Keep local:** exports large instruction sets tied to local paths; use `dex_evidence_public.py` for targeted method and reference searches. |
 | `scripts/method_view.py` | Select DEX methods. **Modified:** `dex_evidence_public.py` accepts an explicit disassembly and query. |
 | `scripts/summarize_methods.py` | Summarize method strings and calls. **Keep local:** assumes private layout; targeted method viewing covers much of its purpose. |
-| `scripts/systemhelper_trace.py` | Offline method, instruction and field index for reporting-path reconstruction. **Keep local:** hardcoded original DEX and full instruction cache; targeted reference searches are provided, but field-index generation is not reproduced. |
+| `scripts/systemhelper_trace.py` | Offline method, instruction and field index for reporting-path reconstruction. **Keep local:** hardcoded original DEX and full instruction cache; the optional `dex_index_public.py` streams method headers and literal references without a cache, but field-index generation is not reproduced. |
 | `scripts/systemhelper_endpoints.py` | Extract literal APK URLs. **Modified:** `apk_urls_public.py` accepts an explicit APK and does not claim that endpoints executed. |
 | `scripts/scan_native.py` | Scan native strings for screen/URL indicators. **Keep local:** fixed private APK layout and potentially sensitive output; the public URL scanner covers URL literals but not all screenshot indicators. |
 | `scripts/summarize_network.py` | Sum selected UID network counters. **Modified:** `netstats_summary_public.py` requires an explicit dump and UIDs. |
