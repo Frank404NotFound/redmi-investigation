@@ -1,0 +1,32 @@
+[
+  {
+    "package": "com.miui.analytics",
+    "size": 525597,
+    "sha256": "a3656199f013e2f68bc20022f941122a13ce99e33c5df1cef054c9267189d73f"
+  },
+  {
+    "package": "com.miui.dmregservice",
+    "size": 3672457,
+    "sha256": "2d2ab22537b6b44d5be0a7a1ac7b3e08cce82c1fe001e2c9406a8d703435b160"
+  },
+  {
+    "package": "com.miui.guardprovider",
+    "size": 13358097,
+    "sha256": "55157b5dcec1cca173e94eccd6639197cb450b39bd0949b08dda60e19ad0359e"
+  },
+  {
+    "package": "com.miui.securitycenter",
+    "size": 67610070,
+    "sha256": "0497077b3761376c7367bb8a07f0c17be3a2715b115d1fd32f47796011ec0927"
+  },
+  {
+    "package": "com.mobiletools.systemhelper",
+    "size": 3169243,
+    "sha256": "3465830c2e56067090fc8549632d532a30bee47a315e0b7935fd3ab136120d09"
+  },
+  {
+    "package": "com.xiaomi.metoknlp",
+    "size": 1621006,
+    "sha256": "fbcaefe1fb259895919746a6fb4820afc1cba193add5e312edf9c00d0ac89150"
+  }
+]

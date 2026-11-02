@@ -1,0 +1,17 @@
+# Default deny: explicitly allow only reviewed publication files.
+/*
+!/.gitignore
+!/README.md
+!/REPORT.md
+!/analysis/
+/analysis/*
+!/analysis/systemhelper.md
+!/analysis/systemhelper_endpoints.md
+!/analysis/apk_hashes.json
+!/analysis/systemhelper_encryption_certificate.json
+!/analysis/selected-evidence.md
+!/disable-test/
+/disable-test/*
+!/disable-test/BASELINE.md
+!/disable-test/RESULT.md
+!/disable-test/ROLLBACK.md
