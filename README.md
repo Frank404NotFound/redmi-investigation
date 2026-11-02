@@ -81,6 +81,24 @@ adb -s <SERIAL> shell dumpsys jobscheduler
 
 Package dumps can show enabled state, UID, version, permissions and declared components. Alarm and job dumps are system-wide: review locally for the package name and treat existing timestamps/counters as historical. Check UID membership before attributing shared-UID activity; permissions and AppOps do not prove collection. These commands can reveal serials, installed apps, network details and other personal data; do not publish raw output. For further ADB syntax see [Android's documentation](https://developer.android.com/tools/adb).
 
+## Reproduction tools
+
+The [script review](scripts/SCRIPT_REVIEW.md) describes every original collector and the published adaptations. The published Python tools require Python 3.8 or later and use only the standard library. ADB snapshots require Android SDK Platform Tools and an already authorized USB-debugging connection. APK analysis additionally requires existing Android SDK build tools (`aapt`, `apksigner`, `dexdump`). No tool installs dependencies, starts app components, changes Android package state, or uploads artifacts. The APK analysis tool writes extracted DEX and disassembly locally; do not publish them.
+
+Choose new output directories outside the repository. Snapshots contain sensitive system-wide data, including installed apps and network information; restrictive local file permissions do not replace review before sharing. Replace placeholders with values appropriate to your device:
+
+```sh
+python3 scripts/adb_snapshot_public.py --serial <SERIAL> --package com.mobiletools.systemhelper --output /path/to/new-private-before
+# Repeat later with a different output directory, then compare locally:
+python3 disable-test/compare_snapshots_public.py /path/to/new-private-before /path/to/new-private-after
+python3 scripts/apk_static_public.py --apk /path/to/local.apk --build-tools /path/to/android-sdk/build-tools/VERSION --output /path/to/new-private-analysis
+python3 scripts/dex_evidence_public.py /path/to/private/classes.dex.disassembly.txt --mode refs --query getInstalledApplications
+python3 scripts/apk_urls_public.py /path/to/local.apk
+python3 scripts/netstats_summary_public.py /path/to/private/netstats.txt --uid <UID>
+```
+
+Shells interpret angle brackets as redirection; replace each complete placeholder before running. URL strings and byte counters alone do not demonstrate contact or content. Inspect command exit codes and output: device versions and Android dump formats differ. The snapshot comparison is descriptive and cannot certify a package safe to disable.
+
 ## Mitigation guide
 
 Start with inspection and review the phone's own privacy and permission controls. Available controls may not affect privileged permissions and changing location or networking can impair services. Network-level domain blocking may reduce some connections but can break functions, miss alternate destinations or encrypted DNS, and cannot establish what data was sent. Assess each component individually: avoid broad debloating or disabling shared-UID telephony and security services on the strength of package names alone.

@@ -15,3 +15,14 @@
 !/disable-test/BASELINE.md
 !/disable-test/RESULT.md
 !/disable-test/ROLLBACK.md
+
+# Individually reviewed, sanitized methodology scripts. Original collectors stay local.
+!/scripts/
+/scripts/*
+!/scripts/adb_snapshot_public.py
+!/scripts/apk_static_public.py
+!/scripts/apk_urls_public.py
+!/scripts/dex_evidence_public.py
+!/scripts/netstats_summary_public.py
+!/scripts/SCRIPT_REVIEW.md
+!/disable-test/compare_snapshots_public.py
